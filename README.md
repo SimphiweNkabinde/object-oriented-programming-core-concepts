@@ -254,6 +254,7 @@ toyota.start()
 ## 5. Polymorphism
 
 Polymorphism means "many forms". It signifies the ability of an object or method to take on _"many forms"_. It allows a **single interface or class to represent different data types or behaviors**.
+Polymorphism promotes code reusability. It improves readability and maintainability by centralizing behavior, simplifying code and making updates easier. It also promotes abstraction by hiding implementation details.
 
 #### Run-time Polymorphism
 
