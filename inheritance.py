@@ -1,39 +1,63 @@
 # Parent Class
-class Device:
-    def __init__(self, brand, price):
-        self.brand = brand
-        self.price = price
+class Polygon:
+    # Attributes
+    def __init__(self, name, sides):
+        self.name = name
+        self.sides = sides
 
-    def info(self):
-        return f"This is a {self.brand} device, priced at R{self.price}."
+    # generic methods
+    def get_perimeter(self):
+        return 0
 
-# Intermediate Child Class
-class Smartphone(Device):
-    def __init__(self, brand, price, camera):
-        super().__init__(brand, price)
-        self.camera = camera
+    def get_area(self):
+        return 0
 
-    def details(self):
-        return f"{self.brand} smartphone with a {self.camera}MP camera priced at R{self.price}."
-    
+# Child Class
+class Square(Polygon):
+    def __init__(self, length):
+        super().__init__(name="square", sides=4)
+        # Unique attribute
+        self.length = length
 
-iphone = Smartphone("Apple", 1499, 12)
+    # Method override
+    def get_perimeter(self):
+        return self.length * 4
 
-print("----Smartphone Class -----\n")
-print(f"Brand: {iphone.brand}\nPrice: R{iphone.price}\nCamera: {iphone.camera}MP\nDetails: {iphone.details()}")
+    def get_area(self):
+        return self.length ** 2
 
+# Child Class
+class Triangle(Polygon):
+    def __init__(self, height, side_b, side_a, side_c):
+        super().__init__(name="triangle", sides=3)
+        # Unique attributes
+        self.height = height
+        self.side_b = side_b
+        self.side_a = side_a
+        self.side_c = side_c
 
-# Child Class (Multi-level inheritance)
-class ProSmartphone(Smartphone):
-    def __init__(self, brand, price, camera, stylus):
-        super().__init__(brand, price, camera)
-        self.stylus = stylus
-    
-    def pro_details(self):
-        return f"{self.brand} Pro model with {self.camera}MP camera and a {self.stylus}-enabled stylus, priced at R{self.price}"
-    
-galaxy_pro = ProSmartphone("Samsung", 29000, 50, "S-Pen")
+    # Method override
+    def get_perimeter(self):
+        return self.side_a + self.side_b +self.side_c
 
-print("\n----ProSmartphone Class -----\n")
+    def get_area(self):
+        return (self.height * self.side_b) / 2
 
-print(f"Brand: {galaxy_pro.brand}\nPrice: R{galaxy_pro.price}\nCamera: {galaxy_pro.camera}MP\nStylus: {galaxy_pro.stylus}\nDetails: {galaxy_pro.pro_details()}")
+square = Square(5)
+trangle = Triangle(6, 7, 7, 7)
+
+print(square.name)
+print(square.sides)
+print(square.length)
+square_perimeter = square.get_perimeter()
+square_area = square.get_area()
+print(square_perimeter)
+print(square_area)
+
+print(trangle.name)
+print(trangle.sides)
+print(trangle.height)
+trangle_perimeter = trangle.get_perimeter()
+trangle_area = trangle.get_area()
+print(trangle_perimeter)
+print(trangle_area)

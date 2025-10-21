@@ -55,72 +55,76 @@ This promotes **code reuse** by enabling the child class to reuse, extend, or mo
 
 ### Example:
 
-An `Animal` parent class defines the `animal_class` and `species` attributes, with the `make_sound` and `show_info` generic methods.
+A `Polygon` parent class defines the `name` and `sides` attributes, with the `get_area` and `get_perimeter` generic methods.
 
-The `Dog` class is defined as a child class of `Animal`. It overrides the `make_sound` and `show_info` method, and has the unique method `play_fetch`
+The `Square` class is defined as a child class of `Polygon`. It overrides the `get_area` and `get_perimeter` method, and has the unique attribute `length`.
 
-The `Snake` class is defined as a child class of `Animal`. It overrides the `make_sound` and `show_info` method, and has the unique method `shed_skin`
+The `Triangle` class is defined as a child class of `Polygon`. It overrides the `get_area` and `get_perimeter` method, and has the unique attribute `height`, `side_a`, `side_b`, and `side_c`.
 
 ```
-class Animal:
-    def __init__(self, animal_class, species):
-        self.animal_class = animal_class
-        self.species = species
+# Parent Class
+class Polygon:
+    # Attributes
+    def __init__(self, name, sides):
+        self.name = name
+        self.sides = sides
 
-    def make_sound(self):
-        print("make generic animal sound")
+    # generic methods
+    def get_perimeter(self):
+        return 0
 
-    def show_info(self):
-        print(f"class: {self.animal_class}")
-        print(f"species: {self.species}")
+    def get_area(self):
+        return 0
 
+# Child Class
+class Square(Polygon):
+    def __init__(self, length):
+        super().__init__(name="square", sides=4)
+        # Unique attribute
+        self.length = length
 
-class Dog(Animal):
-    def __init__(self, breed):
-        super().__init__(animal_class="mammal", species="dog")
-        self.breed = breed
+    # Method override
+    def get_perimeter(self):
+        return self.length * 4
 
-    def make_sound(self):
-        print("bark")
+    def get_area(self):
+        return self.length ** 2
 
-    def show_info(self):
-        print(f"class: {self.animal_class}")
-        print(f"species: {self.species}")
-        print(f"breed: {self.breed}")
+# Child Class
+class Triangle(Polygon):
+    def __init__(self, height, side_b, side_a, side_c):
+        super().__init__(name="triangle", sides=3)
+        # Unique attributes
+        self.height = height
+        self.side_b = side_b
+        self.side_a = side_a
+        self.side_c = side_c
 
-    def play_fetch(self):
-        print(f"The {self.breed} {self.species} is playing fetch")
+    # Method override
+    def get_perimeter(self):
+        return self.side_a + self.side_b +self.side_c
 
-class Snake(Animal):
-    def __init__(self, family, venomous):
-        super().__init__(animal_class="reptile", species="snake")
-        self.family = family
-        self.venomous = venomous
+    def get_area(self):
+        return (self.height * self.side_b) / 2
 
-    def make_sound(self):
-        print("hiss")
+square = Square(5)
+trangle = Triangle(6, 7, 7, 7)
 
-    def show_info(self):
-        print(f"class: {self.animal_class}")
-        print(f"species: {self.species}")
-        print(f"family: {self.family}")
-        print(f"venomous: {self.venomous}")
+print(square.name)
+print(square.sides)
+print(square.length)
+square_perimeter = square.get_perimeter()
+square_area = square.get_area()
+print(square_perimeter)
+print(square_area)
 
-    def shed_skin(self):
-        print(f"The {self.family} {self.species} is shedding its skin.")
-
-my_dog = Dog("Golden Retriever")
-my_snake = Snake("green mamba", True)
-
-
-my_dog.show_info()
-my_dog.make_sound()
-my_dog.play_fetch()
-
-my_snake.show_info()
-my_snake.make_sound()
-my_snake.shed_skin()
-
+print(trangle.name)
+print(trangle.sides)
+print(trangle.height)
+trangle_perimeter = trangle.get_perimeter()
+trangle_area = trangle.get_area()
+print(trangle_perimeter)
+print(trangle_area)
 ```
 
 ## 3. Encapsulation
