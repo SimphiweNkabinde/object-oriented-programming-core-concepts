@@ -1,10 +1,10 @@
-# Object Oriented Programming
+# Object Oriented Programming 💻
 
 Object-Oriented Programming (OOP), is a **programming model that uses _objects_ to design applications**. _Objects_ are software entities that contain data and functions. OOP models real-world entities by combining data (attributes) and behaviors (methods) into single units, making code more organized, reusable, and flexible.
 
-# OOP Core Concepts
+# OOP Core Concepts 💡
 
-## 1. Classes & Objects
+## 1. Classes & Objects 🧱
 
 A Class serves as a **blueprint or template for creating objects**. It defines the **structure and behavior** that objects of that class will possess
 
@@ -47,7 +47,7 @@ toyota.accelerate()
 toyota.brake()
 ```
 
-## 2. Inheritance
+## 2. Inheritance 👨‍👩‍👧
 
 Inheritance is mechanism that allows a new class(child/derived class) to **inherit properties and methods** from an existing parent/base class
 
@@ -127,7 +127,7 @@ print(trangle_perimeter)
 print(trangle_area)
 ```
 
-## 3. Encapsulation
+## 3. Encapsulation 🔒
 
 Encapsulation is the **bundling of data and methods** that operate on that data **into a single unit, a class**. Encapslation includes **restricting direct access to data** such that the internal state of an object is hidden from other parts of the program. Access is controlled through public methods which act as an interface to access and modify data.
 
@@ -191,7 +191,7 @@ print(is_valid_password)
 
 ```
 
-## 4. Abstraction
+## 4. Abstraction 🤫
 
 Abstraction is the process of **hiding complex implementation details** and **showing only the essential, high-level features** of an object or system. It allows you to focus on _what an object does_ rather than how it does it.
 
@@ -251,7 +251,7 @@ toyota = Car("toyota", "corolla", 1.6)
 toyota.start()
 ```
 
-## 5. Polymorphism
+## 5. Polymorphism 🎭
 
 Polymorphism means "many forms". It signifies the ability of an object or method to take on _"many forms"_. It allows a **single interface or class to represent different data types or behaviors**.
 Polymorphism promotes code reusability. It improves readability and maintainability by centralizing behavior, simplifying code and making updates easier. It also promotes abstraction by hiding implementation details.
