@@ -250,3 +250,103 @@ class Car(Vehicle):
 toyota = Car("toyota", "corolla", 1.6)
 toyota.start()
 ```
+
+## 5. Polymorphism
+
+Polymorphism means "many forms". It signifies the ability of an object or method to take on _"many forms"_. It allows a **single interface or class to represent different data types or behaviors**.
+
+#### Run-time Polymorphism
+
+This type is achieved through **Method Overriding**.
+It occurs when a subclass provides a specific implementation for a method that is already defined in its base class. The subclass overrides the behavior of a base class's method. So the same method can take on many forms. This allows us to perform a single action in different ways.
+
+For example, the base class `Shape` can have a `draw()` method for drawing a shape. Derived classes of `Shape` could be `Square`, `Rectangle`, `Diamond`, or `Triangle`. Each shape can be drawn, but each is drawn differently. Applying polymorphism, we can call the same `draw()` method for any shape, but implement it differently for each type of shape.
+
+### Example
+
+```
+# RUN-TIME POLYMORPHISM - method overriding
+# Base class
+class Shape:
+    def __init__(self, name):
+        self.name: str = name
+
+    def draw(self):
+        print(f"draw {self.name} shape")
+
+# Subclass
+class Square(Shape):
+    def __init__(self):
+        super().__init__("square")
+        self.size: int = 3
+
+    def draw(self):
+        for _ in range(self.size):
+            print("*  " * self.size)
+
+# Subclass
+class Rectangle(Shape):
+    def __init__(self):
+        super().__init__("rectangle")
+        self.width: int = 6
+        self.height: int = 3
+
+    def draw(self):
+        for _ in range(self.height):
+            print("*  " * self.width)
+
+# Subclass
+class Triangle(Shape):
+    def __init__(self):
+        super().__init__("triangle")
+        self.height: int = 3
+
+    def draw(self):
+        for i in range(self.height):
+            print("  " * (self.height - i - 1) + "*   " * (i + 1))
+
+# Subclass
+class Diamond(Shape):
+    def __init__(self):
+        super().__init__("diamond")
+        self.size: int = 3
+
+    def draw(self):
+        # Upper half of the diamond
+        for i in range(self.size):
+            print("  " * (self.size - i - 1) + "*   " * (i + 1))
+
+        # Lower half of the diamond
+        for i in range(self.size - 2, -1, -1):
+            print("  " * (self.size - i - 1) + "*   " * (i + 1))
+
+
+shapes: list[Shape] = [Diamond(), Rectangle(), Square(), Triangle()]
+
+for shape in shapes:
+    print(shape.name)
+    shape.draw()
+    print()
+```
+
+#### Compile-time Polymorphism
+
+This type is achieved through **Method Overloading**.
+It occurs when we define multiple methods within the same class that share the same name but have different parameter lists (e.g., number, type, or order of parameters). The compiler determines which method to call based on the arguments provided at compile time.
+
+For example, in a `Calculator` class there's an `add()` method for calculating the sum of 2 numbers. The method takes 2 arguments. What if we want an additional method that calculates the sum of 3 numbers? Instead of defining a new method for this requirement, we can overload the existing `add()` method so that it can take 2 or 3 arguments.
+
+In Python, method overloading is not built-in like in Java or C#. Method overloading is achieved using _default agruments_ and _variable length arguments_
+
+### Example
+
+```
+# COMPILE-TIME POLYMORPHISM - method overloading
+class Calculator:
+    def add(self, a: int, b: int, c: int=0):
+        return a + b + c
+
+calc = Calculator()
+print(calc.add(5, 10))
+print(calc.add(1, 2, 3))
+```
