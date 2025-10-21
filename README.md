@@ -12,11 +12,12 @@ A class defines a set of **attributes** and **methods** that are common to all *
 
 ### Example:
 
-A `Car` class can define the **attributes** like `color` `make`, `model`and the **methods** `start_engine()`, `accelerate`, and `brake`
+A `Car` class can define the **attributes** like `color` `make`, `model`and the **methods** `start_engine()`, `accelerate()`, and `brake()`
 
 ```
+# Define a class
 class Car:
-    def __init__(self, color, make, model):
+    def __init__(self, make, model, color):
         # Attributes
         self.color = color
         self.make = make
@@ -24,16 +25,26 @@ class Car:
 
     # Methods
     def start_engine(self):
-        # implement engine start
-        pass
+        print("starting engine...")
 
     def accelerate(self):
-        # implementat acceleration
-        pass
+        print("accelerating...")
 
     def brake(self):
-        # implement brake action
-        pass
+        print("braking...")
+
+# Create an object (instance of a class)
+toyota = Car("toyota", "corolla", "white")
+
+# Access object attributes
+print(toyota.make)
+print(toyota.model)
+print(toyota.color)
+
+# Call object methods
+toyota.start_engine()
+toyota.accelerate()
+toyota.brake()
 ```
 
 ## 2. Inheritance
